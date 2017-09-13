@@ -32,9 +32,6 @@ x1 = numpy.random.uniform(low=MIN_X, high=MAX_X, size=(NUM_INPUTS, 1))
 # The [:,0] slicing pulls out the values into a one-dimensional list
 x1_1d = x1[:,0]
 
-# y = 0.3x + 1
-y1_1 = 0.3 * x1_1d + 1 + noise
-
 # y = 0.7x^2 - 0.4x + 1.5
 y1_2 = 0.7 * x1_1d * x1_1d - 4 * x1_1d + 1.5 + noise
 
