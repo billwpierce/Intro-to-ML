@@ -46,7 +46,8 @@ y1_2 = 0.7 * x1_1d * x1_1d - 0.4 * x1_1d + 1.5 + noise
 # use scikit-learn's linear regression model and fit to our 2D data
 z1 = x1 * (x1-1)
 model2d = linear_model.LinearRegression()
-model2d.fit(z1, y1_2)
+p = numpy.array([1, 2])
+model2d.fit(x1 ** p, y1_2)
 
 # Print out the parameters for the best fit line/plane
 print()
@@ -73,9 +74,10 @@ matplotlib.pyplot.ylabel('y')
 matplotlib.pyplot.scatter(x1_1d, y1_2)
 
 # predict for inputs along the graph to find the best-fit line
+quadcoef = list(reversed(model2d.coef_)) + [model2d.intercept_]
 X = numpy.linspace(MIN_X, MAX_X)
-Y = model2d.predict(list(zip(X)))
-matplotlib.pyplot.plot(X/(x1-1), Y)
+Y = numpy.polyval(quadcoef, X)
+matplotlib.pyplot.plot(X, Y)
    
 # show the plots
 matplotlib.pyplot.show()
