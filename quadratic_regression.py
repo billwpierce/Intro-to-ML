@@ -41,8 +41,6 @@ y1_2 = 0.7 * x1_1d * x1_1d - 4 * x1_1d + 1.5 + noise
 ################################################################################
 
 # use scikit-learn's linear regression model and fit to our 2D data
-# model2d = linear_model.LinearRegression()
-# model2d.fit(1 * x1 * x1 + 1 * x1, y1_2)
 modelQuad = numpy.polyfit(x1_1d, y1_2, 2)
 
 # Print out the parameters for the best fit line/plane
