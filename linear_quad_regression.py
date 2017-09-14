@@ -1,5 +1,6 @@
 #
 # Template based on the code of Carl Shan and Jen Selby.
+# Borrows heavily from the idea/code presented here: https://stackoverflow.com/questions/33710829/linear-regression-with-quadratic-terms. 
 #
 
 # see basic example here:
@@ -44,7 +45,6 @@ y1_2 = 0.7 * x1_1d * x1_1d - 0.4 * x1_1d + 1.5 + noise
 ################################################################################
 
 # use scikit-learn's linear regression model and fit to our 2D data
-z1 = x1 * (x1-1)
 model2d = linear_model.LinearRegression()
 p = numpy.array([1, 2])
 model2d.fit(x1 ** p, y1_2)
