@@ -34,9 +34,9 @@ plantB_widths = numpy.random.normal(loc=PLANT_B_AVG_WIDTH, size=NUM_INPUTS)
 plantC_heights = numpy.random.normal(loc=PLANT_C_AVG_HEIGHT, size=NUM_INPUTS)
 plantC_widths = numpy.random.normal(loc=PLANT_C_AVG_WIDTH, size=NUM_INPUTS)
 
-print(zip(numpy.append(plantA_heights, plantB_heights, plantC_heights), numpy.append(plantA_widths, plantB_widths, plantC_widths)))
-
-plant_inputs = list(zip(numpy.append(plantA_heights, plantB_heights, plantC_heights), numpy.append(plantA_widths, plantB_widths, plantC_widths)))
+plant_inputs = list(zip(numpy.append(plantA_heights, plantB_heights), numpy.append(plantA_widths, plantB_widths)))
+plantC_inputs = list(zip(plantC_heights, plantC_widths))
+plant_inputs = list(numpy.append(plant_inputs, plantC_inputs))
 
 ################################################################################
 # MODEL TRAINING
@@ -66,7 +66,7 @@ modelC.fit(plant_inputs, plantC_types)
 # put the generated points on the graph
 matplotlib.pyplot.scatter(plantA_heights, plantA_widths, c="red", marker="o")
 matplotlib.pyplot.scatter(plantB_heights, plantB_widths, c="blue", marker="^")
-matplotlib.pyplot.scatter(plantB_heights, plantB_widths, c="yellow", marker="s")
+matplotlib.pyplot.scatter(plantC_heights, plantC_widths, c="yellow", marker="s")
 
 matplotlib.pyplot.show()
 
