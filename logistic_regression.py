@@ -31,7 +31,11 @@ plantB_widths = numpy.random.normal(loc=PLANT_B_AVG_WIDTH, size=NUM_INPUTS)
 
 plant_inputs = list(zip(numpy.append(plantA_heights, plantB_heights), numpy.append(plantA_widths, plantB_widths)))
 
+print(plant_inputs)
+
 types = [0]*NUM_INPUTS + [1]*NUM_INPUTS
+
+print(types)
 
 
 ################################################################################
