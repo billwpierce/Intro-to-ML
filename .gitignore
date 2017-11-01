@@ -1,2 +1,5 @@
 .DS_Store
 .ipynb_checkpoints/
+data/
+Clustering/Unsupervised Learning - K-Means and DBSCAN.ipynb
+Dataset Processing/Introduction to Dataset Processing.ipynb
