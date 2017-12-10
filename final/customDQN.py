@@ -88,7 +88,7 @@ if __name__ == "__main__": # Main part of game:
 		score = 0
 		while True:
 			action = agent.act(state)
-            next_state, reward, done, _ = env.step(action)
+			next_state, reward, done, _ = env.step(action)
 			reward = reward if not done else -10
 			if not done:
 				score += reward # Add your reward to the score
