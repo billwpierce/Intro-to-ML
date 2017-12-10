@@ -25,16 +25,16 @@ class QNet:
 		self.state_size = reduce(mul, state_shape, 1)
 		self.input_shape = state_shape
 		self.action_size = action_size
-		self.memory = deque(maxlen=10000)
+		self.memory = deque(maxlen=2000)
 		self.discount_rate = 0.99
 		self.exploration = 1.0
 		self.exploration_decay = 0.999
 		self.exploration_min = 0.1
 		self.learning_rate = 0.5
-		self.model = self.build_model()
+		self.model = self._build_model()
 
 	# Build a model
-	def build_model(self):
+	def _build_model(self):
 		model = Sequential()
 		model.add(Conv2D(32, kernel_size=(8, 8), strides=(4, 4), activation='relu', input_shape=self.input_shape))
 		model.add(Conv2D(64, kernel_size=(4, 4), strides=(2, 2), activation='relu'))
@@ -88,7 +88,7 @@ if __name__ == "__main__": # Main part of game:
 		score = 0
 		while True:
 			action = agent.act(state)
-			next_state, reward, done, _ = env.step(action)
+            next_state, reward, done, _ = env.step(action)
 			reward = reward if not done else -10
 			if not done:
 				score += reward # Add your reward to the score
