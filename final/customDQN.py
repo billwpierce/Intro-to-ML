@@ -28,7 +28,7 @@ class QNet:
 		self.memory = deque(maxlen=2000)
 		self.discount_rate = 0.99
 		self.exploration = 1.0
-		self.exploration_decay = 0.995
+		self.exploration_decay = 0.999
 		self.exploration_min = 0.1
 		self.learning_rate = 0.5
 		self.model = self._build_model()
