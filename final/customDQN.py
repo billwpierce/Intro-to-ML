@@ -14,7 +14,7 @@ from keras.losses import categorical_crossentropy
 from functools import reduce
 from operator import mul
 
-EPISODES = 1001
+EPISODES = 10001
 
 def addToFile(file, what): # from https://stackoverflow.com/questions/13203868/how-to-write-to-csv-and-not-overwrite-past-text
     f = csv.writer(open(file, 'a')).writerow(what) # appends to csv file
