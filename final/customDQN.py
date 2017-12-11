@@ -57,7 +57,8 @@ class QNet:
 		if self.exploration > np.random.rand():# if we are exploring
 			return random.randrange(self.action_size) # random action
 		else:
-			return self.model.predict(self.process_state(state)) # choose the action in our current state that returns the highest value
+			outcomes = self.model.predict(self.process_state(state)) # choose the action in our current state that returns the highest value
+			return np.argmax(outcomes[0])
 	
 	def train(self, action_num): # train our model
 		# training_data = list(self.memory)[len(self.memory)-action_num: len(self.memory)] # take the most recent iterations of the model
