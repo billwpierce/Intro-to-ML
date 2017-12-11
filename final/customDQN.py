@@ -30,7 +30,7 @@ class QNet:
 		self.exploration = 1.0
 		self.exploration_decay = 0.99954
 		self.exploration_min = 0.05
-		self.learning_rate = 0.5
+		self.learning_rate = 0.9
 		self.model = self._build_model()
 
 	# Build a model
