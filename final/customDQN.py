@@ -15,7 +15,7 @@ from keras.losses import categorical_crossentropy
 from functools import reduce
 from operator import mul
 
-EPISODES = 100
+EPISODES = 10
 
 def addToFile(file, what): # from https://stackoverflow.com/questions/13203868/how-to-write-to-csv-and-not-overwrite-past-text
     f = csv.writer(open(file, 'a')).writerow(what) # appends to csv file
@@ -29,7 +29,8 @@ class QNet:
 		self.memory = deque(maxlen=2000)
 		self.discount_rate = 0.99
 		self.exploration = 1.0
-		self.exploration_decay = 0.99954
+		# self.exploration_decay = 0.99954
+		self.exploration_decay = 0.99
 		self.exploration_min = 0.05
 		self.learning_rate = 0.9
 		self.model = self._build_model()
@@ -104,4 +105,9 @@ if __name__ == "__main__": # Main part of game:
 				break
 		if len(agent.memory) > batch_size:
 			agent.train(batch_size)
-	agent.model.save_weights("weights")
+	model_json = agent.model.to_json()
+	with open("model.json", "w") as json_file:
+	    json_file.write(model_json)
+	# serialize weights to HDF5
+	agent.model.save_weights("model.h5")
+	print("Saved model to disk")
