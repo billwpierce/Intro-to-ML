@@ -104,4 +104,4 @@ if __name__ == "__main__": # Main part of game:
 				break
 		if len(agent.memory) > batch_size:
 			agent.train(batch_size)
-	np.save('weights', agent.model.get_weights())
+	agent.model.save_weights("weights")
