@@ -1,4 +1,5 @@
 # Modified from https://keon.io/deep-q-learning/
+# Based partially off https://www.intelnervana.com/demystifying-deep-reinforcement-learning/
 
 # -*- coding: utf-8 -*-
 # Import libraries
@@ -14,7 +15,7 @@ from keras.losses import categorical_crossentropy
 from functools import reduce
 from operator import mul
 
-EPISODES = 10001
+EPISODES = 100
 
 def addToFile(file, what): # from https://stackoverflow.com/questions/13203868/how-to-write-to-csv-and-not-overwrite-past-text
     f = csv.writer(open(file, 'a')).writerow(what) # appends to csv file
@@ -36,7 +37,8 @@ class QNet:
 	# Build a model
 	def _build_model(self):
 		model = Sequential()
-		model.add(Conv2D(32, kernel_size=(8, 8), strides=(4, 4), activation='relu', input_shape=self.input_shape))
+		model.add(Conv2D(32, kernel_size=(10, 10), strides=(5, 5), activation='relu', input_shape=self.input_shape))
+		model.add(Conv2D(32, kernel_size=(8, 8), strides=(4, 4), activation='relu'))
 		model.add(Conv2D(64, kernel_size=(4, 4), strides=(2, 2), activation='relu'))
 		model.add(Conv2D(64, kernel_size=(3, 3), strides=(1, 1), activation='relu'))
 		model.add(Flatten())
@@ -102,3 +104,4 @@ if __name__ == "__main__": # Main part of game:
 				break
 		if len(agent.memory) > batch_size:
 			agent.train(batch_size)
+	numpy.save('weights', agent.model.get_weights())
