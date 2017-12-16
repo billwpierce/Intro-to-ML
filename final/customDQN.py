@@ -15,7 +15,7 @@ from keras.losses import categorical_crossentropy
 from functools import reduce
 from operator import mul
 
-EPISODES = 10
+EPISODES = 1001
 
 def addToFile(file, what): # from https://stackoverflow.com/questions/13203868/how-to-write-to-csv-and-not-overwrite-past-text
     f = csv.writer(open(file, 'a')).writerow(what) # appends to csv file
@@ -108,6 +108,3 @@ if __name__ == "__main__": # Main part of game:
 	model_json = agent.model.to_json()
 	with open("model.json", "w") as json_file:
 	    json_file.write(model_json)
-	# serialize weights to HDF5
-	agent.model.save_weights("model.h5")
-	print("Saved model to disk")
